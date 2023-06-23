@@ -1,4 +1,4 @@
-# Volunteer Backend
+# CMS Backend
 
 [![Build Status](https://dev.azure.com/TheHelpersOrg/The%20Helpers/_apis/build/status%2FTheHelpersOrganization.volunteer-backend?branchName=master)](https://dev.azure.com/TheHelpersOrg/The%20Helpers/_build/latest?definitionId=2&branchName=master)
 
@@ -72,7 +72,3 @@ $ pnpm run migration:revert
 # reset database migration
 $ pnpm run migration:revert
 ```
-
-# link apppasswords
-
-https://myaccount.google.com/apppasswords
