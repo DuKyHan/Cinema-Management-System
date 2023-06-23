@@ -1,0 +1,149 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["extendedWhereUnique", "fieldReference"]
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DB_URL")
+  shadowDatabaseUrl = env("DB_SHADOW_URL")
+}
+
+model Account {
+  id                  Int                   @id @default(autoincrement())
+  email               String                @unique
+  password            String
+  isAccountDisabled   Boolean               @default(false)
+  isAccountVerified   Boolean               @default(false)
+  createdAt           DateTime?             @default(now())
+  updatedAt           DateTime?             @default(now()) @updatedAt
+  files               File[]
+  profile             Profile?
+  tokens              Token[]
+  accountRoles        AccountRole[]
+  accountBannedBy     AccountBan[]          @relation(name: "accountBannedBy")
+  accountBan          AccountBan[]          @relation(name: "accountBan")
+  accountVerifiedBy   AccountVerification[] @relation(name: "accountVerifiedBy")
+  accountVerification AccountVerification[] @relation(name: "accountVerification")
+}
+
+model Role {
+  id           Int           @id @default(autoincrement())
+  name         String        @unique
+  description  String?
+  createdAt    DateTime?     @default(now())
+  updatedAt    DateTime?     @default(now()) @updatedAt
+  accountRoles AccountRole[]
+}
+
+model Profile {
+  accountId   Int       @id @unique
+  account     Account   @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  username    String?
+  firstName   String?
+  lastName    String?
+  dateOfBirth DateTime?
+  gender      String?
+  bio         String?
+  phoneNumber String?
+  locationId  Int?      @unique
+  location    Location? @relation(fields: [locationId], references: [id], onDelete: SetNull)
+  avatarId    Int?      @unique
+  avatar      File?     @relation(fields: [avatarId], references: [id], onDelete: SetNull)
+  createdAt   DateTime? @default(now())
+  updatedAt   DateTime? @default(now()) @updatedAt
+}
+
+model Token {
+  accountId Int
+  type      String
+  token     String
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now())
+  deletedAt DateTime?
+  account   Account   @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@id([accountId, type])
+}
+
+model File {
+  id                      Int                      @id @default(autoincrement())
+  name                    String
+  internalName            String                   @unique
+  mimetype                String?
+  path                    String
+  size                    Float
+  sizeUnit                String
+  createdAt               DateTime?                @default(now())
+  updatedAt               DateTime?                @default(now()) @updatedAt
+  createdBy               Int
+  account                 Account                  @relation(fields: [createdBy], references: [id], onDelete: Cascade)
+  profile                 Profile?
+  accountVerificationFile AccountVerificationFile?
+}
+
+model Location {
+  id           Int       @id @default(autoincrement())
+  addressLine1 String?
+  addressLine2 String?
+  locality     String?
+  region       String?
+  country      String?
+  latitude     Float?
+  longitude    Float?
+  createdAt    DateTime? @default(now())
+  updatedAt    DateTime? @default(now()) @updatedAt
+  profile      Profile?
+}
+
+model Contact {
+  id          Int     @id @default(autoincrement())
+  name        String
+  phoneNumber String?
+  email       String?
+}
+
+model AccountBan {
+  id                 Int       @id @default(autoincrement())
+  accountId          Int
+  account            Account   @relation(name: "accountBan", fields: [accountId], references: [id], onDelete: Cascade)
+  performedBy        Int
+  performedByAccount Account   @relation(name: "accountBannedBy", fields: [performedBy], references: [id], onDelete: Cascade)
+  isBanned           Boolean
+  note               String?
+  createdAt          DateTime? @default(now())
+  updatedAt          DateTime? @default(now()) @updatedAt
+}
+
+model AccountVerification {
+  id                      Int                       @id @default(autoincrement())
+  accountId               Int
+  account                 Account                   @relation(name: "accountVerification", fields: [accountId], references: [id], onDelete: Cascade)
+  performedBy             Int?
+  performedByAccount      Account?                  @relation(name: "accountVerifiedBy", fields: [performedBy], references: [id], onDelete: Cascade)
+  status                  String                    @default("pending")
+  isVerified              Boolean
+  content                 String?
+  note                    String?
+  createdAt               DateTime?                 @default(now())
+  updatedAt               DateTime?                 @default(now()) @updatedAt
+  accountVerificationFile AccountVerificationFile[]
+}
+
+model AccountRole {
+  accountId Int
+  roleId    Int
+  account   Account   @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  role      Role      @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @default(now()) @updatedAt
+
+  @@id([accountId, roleId])
+}
+
+model AccountVerificationFile {
+  accountVerificationId Int
+  fileId                Int                 @id @unique
+  accountVerification   AccountVerification @relation(fields: [accountVerificationId], references: [id], onDelete: Cascade)
+  file                  File                @relation(fields: [fileId], references: [id], onDelete: Cascade)
+}
