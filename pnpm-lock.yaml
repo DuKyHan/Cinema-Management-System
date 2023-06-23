@@ -41,8 +41,8 @@ dependencies:
     specifier: ^9.4.1
     version: 9.4.1(@nestjs/common@9.4.1)(@nestjs/core@9.4.1)
   '@nestjs/schedule':
-    specifier: ^2.2.2
-    version: 2.2.2(@nestjs/common@9.4.1)(@nestjs/core@9.4.1)(reflect-metadata@0.1.13)
+    specifier: ^3.0.1
+    version: 3.0.1(@nestjs/common@9.4.1)(@nestjs/core@9.4.1)(reflect-metadata@0.1.13)
   '@nestjs/swagger':
     specifier: ^6.3.0
     version: 6.3.0(@nestjs/common@9.4.1)(@nestjs/core@9.4.1)(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)
@@ -118,6 +118,9 @@ dependencies:
   pg:
     specifier: ^8.11.0
     version: 8.11.0
+  pnpx:
+    specifier: ^0.0.1
+    version: 0.0.1
   prisma:
     specifier: ^4.16.0
     version: 4.16.0
@@ -3433,16 +3436,16 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@nestjs/schedule@2.2.2(@nestjs/common@9.4.1)(@nestjs/core@9.4.1)(reflect-metadata@0.1.13):
-    resolution: {integrity: sha512-e9z1bbFwi4QsPkR2ix72OABhBlfRQcl4ZjF8LShlefOskR4ySN4rUzJilH+1rk8vORYDyGDurVdeduPyyfSQRg==}
+  /@nestjs/schedule@3.0.1(@nestjs/common@9.4.1)(@nestjs/core@9.4.1)(reflect-metadata@0.1.13):
+    resolution: {integrity: sha512-4CAFu4rE/QPYnz/icRg3GiuLmY1bXopG8bWTJ9d7bXzaHBaPKIjGvZ20wsK8P+MncrVCkmK0iYhQrNj0cwX9+A==}
     peerDependencies:
-      '@nestjs/common': ^7.0.0 || ^8.0.0 || ^9.0.0
-      '@nestjs/core': ^7.0.0 || ^8.0.0 || ^9.0.0
+      '@nestjs/common': ^8.0.0 || ^9.0.0 || ^10.0.0
+      '@nestjs/core': ^8.0.0 || ^9.0.0 || ^10.0.0
       reflect-metadata: ^0.1.12
     dependencies:
       '@nestjs/common': 9.4.1(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/core': 9.4.1(@nestjs/common@9.4.1)(@nestjs/platform-express@9.4.1)(reflect-metadata@0.1.13)(rxjs@7.8.1)
-      cron: 2.3.0
+      cron: 2.3.1
       reflect-metadata: 0.1.13
       uuid: 9.0.0
     dev: false
@@ -5442,8 +5445,8 @@ packages:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
     dev: true
 
-  /cron@2.3.0:
-    resolution: {integrity: sha512-ZN5HP8zDY41sJolMsbc+GksRATcbvkPKF5wR/qc8FrV4NBVi9ORQa1HmYa5GydaysUB80X9XpRlRkooa5uEtTA==}
+  /cron@2.3.1:
+    resolution: {integrity: sha512-1eRRlIT0UfIqauwbG9pkg3J6CX9A6My2ytJWqAXoK0T9oJnUZTzGBNPxao0zjodIbPgf8UQWjE62BMb9eVllSQ==}
     dependencies:
       luxon: 3.3.0
     dev: false
@@ -9843,6 +9846,11 @@ packages:
   /png-js@1.0.0:
     resolution: {integrity: sha512-k+YsbhpA9e+EFfKjTCH3VW6aoKlyNYI6NYdTfDL4CIvFnvsuO84ttonmZE7rc+v23SLTH8XX+5w/Ak9v0xGY4g==}
     dev: true
+
+  /pnpx@0.0.1:
+    resolution: {integrity: sha512-mBRUYL3Stk3D9Lm2Bpk9hpCeo9X1QcFUTfwyBEjVDJpI/1/xOxruz5nHJuQLnaBWddAI+iNgo/2qY0qt0Nnf/w==}
+    hasBin: true
+    dev: false
 
   /postgres-array@2.0.0:
     resolution: {integrity: sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA==}
