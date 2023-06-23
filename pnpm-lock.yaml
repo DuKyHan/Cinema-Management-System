@@ -35,8 +35,8 @@ dependencies:
     specifier: ^10.0.3
     version: 10.0.3(@nestjs/common@9.4.1)
   '@nestjs/passport':
-    specifier: ^9.0.3
-    version: 9.0.3(@nestjs/common@9.4.1)(passport@0.6.0)
+    specifier: ^10.0.0
+    version: 10.0.0(@nestjs/common@9.4.1)(passport@0.6.0)
   '@nestjs/platform-express':
     specifier: ^9.4.1
     version: 9.4.1(@nestjs/common@9.4.1)(@nestjs/core@9.4.1)
@@ -118,6 +118,9 @@ dependencies:
   pg:
     specifier: ^8.11.0
     version: 8.11.0
+  pnpx:
+    specifier: ^0.0.1
+    version: 0.0.1
   prisma:
     specifier: ^4.16.0
     version: 4.16.0
@@ -3407,10 +3410,10 @@ packages:
       reflect-metadata: 0.1.13
     dev: false
 
-  /@nestjs/passport@9.0.3(@nestjs/common@9.4.1)(passport@0.6.0):
-    resolution: {integrity: sha512-HplSJaimEAz1IOZEu+pdJHHJhQyBOPAYWXYHfAPQvRqWtw4FJF1VXl1Qtk9dcXQX1eKytDtH+qBzNQc19GWNEg==}
+  /@nestjs/passport@10.0.0(@nestjs/common@9.4.1)(passport@0.6.0):
+    resolution: {integrity: sha512-IlKKc6M7JOe+4dBbW6gZsXBSD05ZYgwfGf3GJhgCmUGYVqffpDdALQSS6JftnExrE+12rACoEmHkzYwKAGVK0Q==}
     peerDependencies:
-      '@nestjs/common': ^8.0.0 || ^9.0.0
+      '@nestjs/common': ^8.0.0 || ^9.0.0 || ^10.0.0
       passport: ^0.4.0 || ^0.5.0 || ^0.6.0
     dependencies:
       '@nestjs/common': 9.4.1(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
@@ -9843,6 +9846,11 @@ packages:
   /png-js@1.0.0:
     resolution: {integrity: sha512-k+YsbhpA9e+EFfKjTCH3VW6aoKlyNYI6NYdTfDL4CIvFnvsuO84ttonmZE7rc+v23SLTH8XX+5w/Ak9v0xGY4g==}
     dev: true
+
+  /pnpx@0.0.1:
+    resolution: {integrity: sha512-mBRUYL3Stk3D9Lm2Bpk9hpCeo9X1QcFUTfwyBEjVDJpI/1/xOxruz5nHJuQLnaBWddAI+iNgo/2qY0qt0Nnf/w==}
+    hasBin: true
+    dev: false
 
   /postgres-array@2.0.0:
     resolution: {integrity: sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA==}
