@@ -89,7 +89,7 @@
     "passport-local": "^1.0.0",
     "pg": "^8.11.0",
     "pnpx": "^0.0.1",
-    "prisma": "^4.16.0",
+    "prisma": "^5.1.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^5.0.1",
     "rxjs": "^7.8.1",
